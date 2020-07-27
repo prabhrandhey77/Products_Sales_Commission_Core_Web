@@ -1,0 +1,45 @@
+﻿@page
+@model Products_Sales_Commission_Core_Web.Pages.Sales.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Sale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sale.Id" />
+            <div class="form-group">
+                <label asp-for="Sale.SalesAgentId" class="control-label"></label>
+                <select asp-for="Sale.SalesAgentId" class="form-control" asp-items="ViewBag.SalesAgentId"></select>
+                <span asp-validation-for="Sale.SalesAgentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sale.ProductId" class="control-label"></label>
+                <select asp-for="Sale.ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                <span asp-validation-for="Sale.ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sale.Quantity" class="control-label"></label>
+                <input asp-for="Sale.Quantity" class="form-control" />
+                <span asp-validation-for="Sale.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
